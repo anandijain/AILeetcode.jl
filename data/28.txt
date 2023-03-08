@@ -1,37 +1,27 @@
-Can you solve this real interview question? Valid Parentheses - Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
-
-An input string is valid if:
-
- 1. Open brackets must be closed by the same type of brackets.
- 2. Open brackets must be closed in the correct order.
- 3. Every close bracket has a corresponding open bracket of the same type.
+Can you solve this real interview question? Find the Index of the First Occurrence in a String - Given two strings needle and haystack, return the index of the first occurrence of needle in haystack, or -1 if needle is not part of haystack.
 
  
 
 Example 1:
 
 
-Input: s = "()"
-Output: true
+Input: haystack = "sadbutsad", needle = "sad"
+Output: 0
+Explanation: "sad" occurs at index 0 and 6.
+The first occurrence is at index 0, so we return 0.
 
 
 Example 2:
 
 
-Input: s = "()[]{}"
-Output: true
-
-
-Example 3:
-
-
-Input: s = "(]"
-Output: false
+Input: haystack = "leetcode", needle = "leeto"
+Output: -1
+Explanation: "leeto" did not occur in "leetcode", so we return -1.
 
 
  
 
 Constraints:
 
- * 1 <= s.length <= 104
- * s consists of parentheses only '()[]{}'.
+ * 1 <= haystack.length, needle.length <= 104
+ * haystack and needle consist of only lowercase English characters.

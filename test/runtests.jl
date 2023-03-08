@@ -1,7 +1,6 @@
 using OpenAIReplMode
 using OpenAIReplMode: chat
 using AILeetcode
-getc(x) = x.choices[1].message.content
 s = """Roman numerals are represented by seven different symbols: I, V, X, L, C, D and M.
 
 Symbol       Value
@@ -51,6 +50,8 @@ j = chat(s)
 c = getc(j)
 bs = get_julia_code_blocks(c)
 
+# fs = write(./test/solutions/FILENAME, join(get_julia_code_blocks( getc(chat(s))), '\n'))
+# write()
 code_blocks = get_julia_code_blocks(c)
 
 evaluate_leetcode_solution(c)

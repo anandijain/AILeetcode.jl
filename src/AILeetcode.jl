@@ -1,26 +1,32 @@
 module AILeetcode
 
-const PROMPT = "solve this in julia, remember julia is one indexed, return two code blocks, the first is the function definition, the second are the test cases"
+PROMPT = """
+solve the above in julia, remember julia is one indexed
+return exactly two code blocks. the first is the function definition, the second are the test cases wrapped in a testset
+"""
 
-function get_julia_code_blocks(markdown::AbstractString)
+function get_julia_code_blocks(markdown::AbstractString;prefix="```julia")
     blocks = Vector{String}()
     mdlines = split(markdown, "\n")
     in_block = false
     curr_block = ""
     for line in mdlines
-        if startswith(line, "```julia")
+        if startswith(line, prefix)
             in_block = true
             curr_block = ""
         elseif startswith(line, "```")
             in_block = false
             push!(blocks, curr_block)
         end
-        if in_block && !startswith(line, "```julia")
+        if in_block && !startswith(line, prefix)
             curr_block *= line * "\n"
         end
     end
     return blocks
 end
+# cbs = get_julia_code_blocks
+codeblocks = get_julia_code_blocks
+# codeblocks() = codeblocks(ans)
 
 function evaluate_leetcode_solution(markdown::AbstractString)
     # Split markdown into code blocks
@@ -36,7 +42,10 @@ function evaluate_leetcode_solution(markdown::AbstractString)
 
 end
 
-export get_julia_code_blocks, evaluate_leetcode_solution
+getc(x) = x.choices[1].message.content
+
+
+export get_julia_code_blocks, evaluate_leetcode_solution, getc
 export PROMPT
 
 end # module AILeetcode
