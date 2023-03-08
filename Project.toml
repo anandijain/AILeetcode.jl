@@ -4,6 +4,8 @@ authors = ["anand jain <anandj@uchicago.edu>"]
 version = "0.1.0"
 
 [deps]
+CSV = "336ed68f-0bac-5ca0-87d4-7b16caf5d00b"
+DataFrames = "a93c6f00-e57d-5684-b7b6-d8193f3e46c0"
 OpenAIReplMode = "022fafc6-85a1-46a3-9dea-7935d3763744"
 SafeTestsets = "1bc83da4-3b8d-516f-aca4-4fe02f6d838f"
 

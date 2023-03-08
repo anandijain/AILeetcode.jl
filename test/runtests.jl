@@ -1,6 +1,25 @@
 using OpenAIReplMode
-using AILeetcode
+using AILeetcode, CSV, DataFrames
 using Test, SafeTestsets
+
+datadir = joinpath(@__DIR__, "..", "data")
+soldir = joinpath(@__DIR__, "solutions")
+getfn(fn) = splitext(basename(fn))[1]
+
+function goodbad(f, xs; verbose=false)
+    good = []
+    bad = []
+    for (i, x) in enumerate(xs)
+        verbose && @info x
+        try
+            y = f(x)
+            push!(good, (i, x) => y)
+        catch e
+            push!(bad, (i, x) => e)
+        end
+    end
+    good, bad
+end
 
 sol_fns = readdir(soldir; join=true)
 g2, b2 = goodbad(include, sol_fns)
@@ -17,43 +36,3 @@ for (i, sfn) in enumerate(sol_fns)
         include($sfn)
     end)))
 end
-
-# @safetestset "1" begin
-#     include("/Users/anand/.julia/dev/AILeetcode/test/solutions/1.jl")
-# end
-# @safetestset "2" begin
-#     include("/Users/anand/.julia/dev/AILeetcode/test/solutions/101.jl")
-# end
-# @safetestset "3" begin
-#     include("/Users/anand/.julia/dev/AILeetcode/test/solutions/11.jl")
-# end
-# @safetestset "4" begin
-#     include("/Users/anand/.julia/dev/AILeetcode/test/solutions/118.jl")
-# end
-# @safetestset "5" begin
-#     include("/Users/anand/.julia/dev/AILeetcode/test/solutions/121.jl")
-# end
-# @safetestset "6" begin
-#     include("/Users/anand/.julia/dev/AILeetcode/test/solutions/13.jl")
-# end
-# @safetestset "7" begin
-#     include("/Users/anand/.julia/dev/AILeetcode/test/solutions/136.jl")
-# end
-# @safetestset "8" begin
-#     include("/Users/anand/.julia/dev/AILeetcode/test/solutions/14.jl")
-# end
-# @safetestset "9" begin
-#     include("/Users/anand/.julia/dev/AILeetcode/test/solutions/15.jl")
-# end
-# @safetestset "10" begin
-#     include("/Users/anand/.julia/dev/AILeetcode/test/solutions/163.jl")
-# end
-# @safetestset "11" begin
-#     include("/Users/anand/.julia/dev/AILeetcode/test/solutions/169.jl")
-# end
-# @safetestset "12" begin
-#     include("/Users/anand/.julia/dev/AILeetcode/test/solutions/171.jl")
-# end
-# @safetestset "13" begin
-#     include("/Users/anand/.julia/dev/AILeetcode/test/solutions/190.jl")
-# end

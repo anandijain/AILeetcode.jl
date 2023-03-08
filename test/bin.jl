@@ -4,8 +4,9 @@ using Test, SafeTestsets
 
 datadir = joinpath(@__DIR__, "..", "data")
 soldir = joinpath(@__DIR__, "solutions")
-fns = readdir(datadir; join=true)
 getfn(fn) = splitext(basename(fn))[1] # add this to startup
+
+fns = readdir(datadir; join=true)
 fn = fns[1]
 # bs = codeblocks(resp)
 # c = getc(resp)
