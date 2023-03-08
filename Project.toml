@@ -4,10 +4,8 @@ authors = ["anand jain <anandj@uchicago.edu>"]
 version = "0.1.0"
 
 [deps]
-Cascadia = "54eefc05-d75b-58de-a785-1a3403f0919f"
-Gumbo = "708ec375-b3d6-5a57-a7ce-8257bf98657a"
-HTTP = "cd3eb016-35fb-5094-929b-558a96fad6f3"
 OpenAIReplMode = "022fafc6-85a1-46a3-9dea-7935d3763744"
+SafeTestsets = "1bc83da4-3b8d-516f-aca4-4fe02f6d838f"
 
 [extras]
 Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"

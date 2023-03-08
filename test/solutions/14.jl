@@ -1,38 +1,38 @@
-function is_match(s::AbstractString, p::AbstractString)::Bool
-    s = collect(s)
-    p = collect(p)
-    dp = fill(false, length(s), length(p))
-    
-    # empty string and pattern both matches
-    dp[1,1] = true
-    
-    # mark the empty pattern matching
-    for i in 2:length(p)
-        if p[i] == '*' && dp[1,i-2]
-            dp[1,i] = true
-        end
+function longestCommonPrefix(strs::Array{String,1})::AbstractString
+    n = length(strs)
+    if n == 0
+        return ""
+    elseif n == 1
+        return strs[1]
     end
-    
-    for i in 2:length(s)+1
-        for j in 2:length(p)+1
-            if s[i-1] == p[j-1] || p[j-1] == '.'
-                dp[i-1,j-1] = dp[i-2,j-2]
-            elseif p[j-1] == '*'
-                dp[i-1,j-1] = dp[i-1,j-2]
-                if p[j-2] == s[i-1] || p[j-2] == '.'
-                    dp[i-1,j-1] = dp[i-1,j-1] || dp[i-2,j-1]
-                end
+    min_len = minimum(length.(strs))
+    common_prefix = ""
+    for i in 1:min_len
+        char_to_match = strs[1][i]
+        for j in 2:n
+            if strs[j][i] != char_to_match
+                return common_prefix
             end
         end
+        common_prefix *= char_to_match
     end
-    
-    return dp[end]
+    return common_prefix
 end
 
 
-
-@testset "is_match tests" begin
-    @test is_match("aa", "a") == false
-    @test is_match("aa", "a*") == true
-    @test is_match("ab", ".*") == true
+@testset "longestCommonPrefix tests" begin
+    # Test case 1
+    strs = ["flower", "flow", "flight"]
+    expected_output = "fl"
+    @test longestCommonPrefix(strs) == expected_output
+    
+    # Test case 2
+    strs = ["dog", "racecar", "car"]
+    expected_output = ""
+    @test longestCommonPrefix(strs) == expected_output
+    
+    # Test case 3
+    strs = ["test", "testing", "testable"]
+    expected_output = "test"
+    @test longestCommonPrefix(strs) == expected_output
 end
