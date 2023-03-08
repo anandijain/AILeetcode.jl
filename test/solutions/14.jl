@@ -1,38 +1,42 @@
-function longestCommonPrefix(strs::Array{String,1})::AbstractString
-    n = length(strs)
-    if n == 0
+function longest_common_prefix(strs::Vector{String})::String
+    if isempty(strs)
         return ""
-    elseif n == 1
-        return strs[1]
     end
-    min_len = minimum(length.(strs))
-    common_prefix = ""
-    for i in 1:min_len
-        char_to_match = strs[1][i]
-        for j in 2:n
-            if strs[j][i] != char_to_match
-                return common_prefix
+    prefix = strs[1]
+    for i in 2:length(strs)
+        while !startswith(strs[i], prefix)
+            prefix = prefix[1:end-1]
+            if isempty(prefix)
+                return ""
             end
         end
-        common_prefix *= char_to_match
     end
-    return common_prefix
+    return prefix
 end
 
-
-@testset "longestCommonPrefix tests" begin
-    # Test case 1
-    strs = ["flower", "flow", "flight"]
-    expected_output = "fl"
-    @test longestCommonPrefix(strs) == expected_output
+@testset "Longest Common Prefix Tests" begin
+    # Example 1
+    strs1 = ["flower","flow","flight"]
+    expected_output1 = "fl"
+    @test longest_common_prefix(strs1) == expected_output1
     
-    # Test case 2
-    strs = ["dog", "racecar", "car"]
-    expected_output = ""
-    @test longestCommonPrefix(strs) == expected_output
+    # Example 2
+    strs2 = ["dog","racecar","car"]
+    expected_output2 = ""
+    @test longest_common_prefix(strs2) == expected_output2
     
-    # Test case 3
-    strs = ["test", "testing", "testable"]
-    expected_output = "test"
-    @test longestCommonPrefix(strs) == expected_output
+    # Custom Test 1
+    strs3 = ["abcd", "abcde", "abc"]
+    expected_output3 = "abc"
+    @test longest_common_prefix(strs3) == expected_output3
+    
+    # Custom Test 2
+    strs4 = ["race", "racecar", "racetrack"]
+    expected_output4 = "race"
+    @test longest_common_prefix(strs4) == expected_output4
+    
+    # Custom Test 3
+    strs5 = ["", "cat", "car", "caterpillar"]
+    expected_output5 = ""
+    @test longest_common_prefix(strs5) == expected_output5
 end

@@ -1,26 +1,23 @@
-function titleToNumber(columnTitle::AbstractString)::Int64
-    num = 0
-    for i in 1:length(columnTitle)
-        digit = columnTitle[length(columnTitle)-i+1]
-        num += (Int(digit[1]) - 64) * 26^(i-1)
+function titleToNumber(columnTitle::AbstractString)::Int
+    result = 0
+    multiplier = 1
+    
+    for i = length(columnTitle):-1:1
+        digit = columnTitle[i]
+        value = UInt16(digit) - UInt16('A') + 1
+        result += value * multiplier
+        multiplier *= 26
     end
-    return num
+    
+    return result
 end
 
-
-@testset "titleToNumber tests" begin
-    # Test case 1
-    columnTitle = "A"
-    expected_output = 1
-    @test titleToNumber(columnTitle) == expected_output
+@testset "Excel Sheet Column Number Tests" begin
+    # Example cases
+    @test titleToNumber("A") == 1
+    @test titleToNumber("AB") == 28
+    @test titleToNumber("ZY") == 701
     
-    # Test case 2
-    columnTitle = "AB"
-    expected_output = 28
-    @test titleToNumber(columnTitle) == expected_output
-    
-    # Test case 3
-    columnTitle = "ZY"
-    expected_output = 701
-    @test titleToNumber(columnTitle) == expected_output
+    # Test case with all characters
+    @test titleToNumber("FXSHRXW") == 2147483647
 end
