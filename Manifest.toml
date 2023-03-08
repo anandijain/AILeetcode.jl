@@ -123,7 +123,9 @@ version = "1.2.0"
 
 [[deps.OpenAIReplMode]]
 deps = ["HTTP", "JSON3", "Markdown", "ReplMaker"]
-path = "/Users/anand/.julia/dev/OpenAIReplMode"
+git-tree-sha1 = "487b4530e26ad618a8d92bffb242ce47086f1ac8"
+repo-rev = "main"
+repo-url = "https://github.com/anandijain/OpenAIReplMode.jl"
 uuid = "022fafc6-85a1-46a3-9dea-7935d3763744"
 version = "0.1.0"
 
