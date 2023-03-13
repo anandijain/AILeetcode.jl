@@ -1,0 +1,1 @@
+{"python3": "class Solution:\n    def hammingWeight(self, n: int) -> int:", "typescript": "function hammingWeight(n: number): number {\n\n};", "rust": "impl Solution {\n    pub fn hammingWeight (n: u32) -> i32 {\n        \n    }\n}", "c++": "class Solution {\npublic:\n    int hammingWeight(uint32_t n) {\n        \n    }\n};"}

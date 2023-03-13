@@ -1,0 +1,1 @@
+{"python3": "class Solution:\n    def myAtoi(self, s: str) -> int:", "typescript": "function myAtoi(s: string): number {\n\n};", "rust": "impl Solution {\n    pub fn my_atoi(s: String) -> i32 {\n        \n    }\n}", "c++": "class Solution {\npublic:\n    int myAtoi(string s) {\n        \n    }\n};"}

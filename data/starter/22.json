@@ -1,0 +1,1 @@
+{"c++": "class Solution {\npublic:\n    vector<string> generateParenthesis(int n) {\n        \n    }\n};", "python3": "class Solution:\n    def generateParenthesis(self, n: int) -> List[str]:", "typescript": "function generateParenthesis(n: number): string[] {\n\n};", "rust": "impl Solution {\n    pub fn generate_parenthesis(n: i32) -> Vec<String> {\n        \n    }\n}"}

@@ -1,0 +1,1 @@
+{"c++": "class Solution {\npublic:\n    int titleToNumber(string columnTitle) {\n        \n    }\n};", "python3": "class Solution:\n    def titleToNumber(self, columnTitle: str) -> int:", "typescript": "function titleToNumber(columnTitle: string): number {\n\n};", "rust": "impl Solution {\n    pub fn title_to_number(column_title: String) -> i32 {\n        \n    }\n}"}

@@ -1,0 +1,1 @@
+{"typescript": "function maxProfit(prices: number[]): number {\n\n};", "rust": "impl Solution {\n    pub fn max_profit(prices: Vec<i32>) -> i32 {\n        \n    }\n}", "c++": "class Solution {\npublic:\n    int maxProfit(vector<int>& prices) {\n        \n    }\n};", "python3": "class Solution:\n    def maxProfit(self, prices: List[int]) -> int:"}

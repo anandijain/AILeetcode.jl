@@ -1,0 +1,1 @@
+{"python3": "class Solution:\n    def isValid(self, s: str) -> bool:", "typescript": "function isValid(s: string): boolean {\n\n};", "rust": "impl Solution {\n    pub fn is_valid(s: String) -> bool {\n        \n    }\n}", "c++": "class Solution {\npublic:\n    bool isValid(string s) {\n        \n    }\n};"}

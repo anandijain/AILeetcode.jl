@@ -1,0 +1,1 @@
+{"python3": "class Solution:\n    def maxArea(self, height: List[int]) -> int:", "typescript": "function maxArea(height: number[]): number {\n\n};", "rust": "impl Solution {\n    pub fn max_area(height: Vec<i32>) -> i32 {\n        \n    }\n}", "c++": "class Solution {\npublic:\n    int maxArea(vector<int>& height) {\n        \n    }\n};"}

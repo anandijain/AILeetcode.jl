@@ -1,0 +1,1 @@
+{"c++": "class Solution {\npublic:\n    vector<string> fizzBuzz(int n) {\n        \n    }\n};", "python3": "class Solution:\n    def fizzBuzz(self, n: int) -> List[str]:", "typescript": "function fizzBuzz(n: number): string[] {\n\n};", "rust": "impl Solution {\n    pub fn fizz_buzz(n: i32) -> Vec<String> {\n        \n    }\n}"}

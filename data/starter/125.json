@@ -1,0 +1,1 @@
+{"c++": "class Solution {\npublic:\n    bool isPalindrome(string s) {\n        \n    }\n};", "python3": "class Solution:\n    def isPalindrome(self, s: str) -> bool:", "typescript": "function isPalindrome(s: string): boolean {\n\n};", "rust": "impl Solution {\n    pub fn is_palindrome(s: String) -> bool {\n        \n    }\n}"}

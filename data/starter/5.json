@@ -1,0 +1,6 @@
+{
+    "c++": "class Solution {\npublic:\n    string longestPalindrome(string s) {\n        \n    }\n};",
+    "python3": "class Solution:\n    def longestPalindrome(self, s: str) -> str:",
+    "typescript": "function longestPalindrome(s: string): string {\n\n};",
+    "rust": "impl Solution {\n    pub fn longest_palindrome(s: String) -> String {\n        \n    }\n}"
+}

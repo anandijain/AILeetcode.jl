@@ -1,0 +1,1 @@
+{"python3": "class Solution:\n    def reverseBits(self, n: int) -> int:", "typescript": "function reverseBits(n: number): number {\n    \n};", "rust": "impl Solution {\n    pub fn reverse_bits(x: u32) -> u32 {\n        \n    }\n}", "c++": "class Solution {\npublic:\n    uint32_t reverseBits(uint32_t n) {\n        \n    }\n};"}

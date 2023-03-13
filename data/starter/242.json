@@ -1,0 +1,1 @@
+{"python3": "class Solution:\n    def isAnagram(self, s: str, t: str) -> bool:", "typescript": "function isAnagram(s: string, t: string): boolean {\n\n};", "rust": "impl Solution {\n    pub fn is_anagram(s: String, t: String) -> bool {\n        \n    }\n}"}

@@ -1,0 +1,1 @@
+{"c++": "class Solution {\npublic:\n    int majorityElement(vector<int>& nums) {\n        \n    }\n};", "python3": "class Solution:\n    def majorityElement(self, nums: List[int]) -> int:", "typescript": "function majorityElement(nums: number[]): number {\n\n};", "rust": "impl Solution {\n    pub fn majority_element(nums: Vec<i32>) -> i32 {\n        \n    }\n}"}

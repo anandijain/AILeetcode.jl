@@ -1,0 +1,1 @@
+{"c++": "class Solution {\npublic:\n    int romanToInt(string s) {\n        \n    }\n};", "python3": "class Solution:\n    def romanToInt(self, s: str) -> int:", "typescript": "function romanToInt(s: string): number {\n\n};", "rust": "impl Solution {\n    pub fn roman_to_int(s: String) -> i32 {\n        \n    }\n}"}

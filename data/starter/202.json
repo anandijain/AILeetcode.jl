@@ -1,0 +1,1 @@
+{"typescript": "function isHappy(n: number): boolean {\n\n};", "rust": "impl Solution {\n    pub fn is_happy(n: i32) -> bool {\n        \n    }\n}", "c++": "class Solution {\npublic:\n    bool isHappy(int n) {\n        \n    }\n};", "python3": "class Solution:\n    def isHappy(self, n: int) -> bool:"}

@@ -1,0 +1,1 @@
+{"c++": "class Solution {\npublic:\n    vector<vector<int>> threeSum(vector<int>& nums) {\n        \n    }\n};", "python3": "class Solution:\n    def threeSum(self, nums: List[int]) -> List[List[int]]:", "typescript": "function threeSum(nums: number[]): number[][] {\n\n};", "rust": "impl Solution {\n    pub fn three_sum(nums: Vec<i32>) -> Vec<Vec<i32>> {\n        \n    }\n}"}

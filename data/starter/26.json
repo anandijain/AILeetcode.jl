@@ -1,0 +1,1 @@
+{"rust": "impl Solution {\n    pub fn remove_duplicates(nums: &mut Vec<i32>) -> i32 {\n        \n    }\n}", "c++": "class Solution {\npublic:\n    int removeDuplicates(vector<int>& nums) {\n        \n    }\n};", "python3": "class Solution:\n    def removeDuplicates(self, nums: List[int]) -> int:", "typescript": "function removeDuplicates(nums: number[]): number {\n\n};"}

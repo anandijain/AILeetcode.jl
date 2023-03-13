@@ -1,0 +1,6 @@
+{
+    "typescript": "/**\n Do not return anything, modify s in-place instead.\n */\nfunction reverseString(s: string[]): void {\n\n};",
+    "rust": "impl Solution {\n    pub fn reverse_string(s: &mut Vec<char>) {\n        \n    }\n}",
+    "c++": "class Solution {\npublic:\n    void reverseString(vector<char>& s) {\n        \n    }\n};",
+    "python3": "class Solution:\n    def reverseString(self, s: List[str]) -> None:\n        \"\"\"\n        Do not return anything, modify s in-place instead.\n        \"\"\""
+}
