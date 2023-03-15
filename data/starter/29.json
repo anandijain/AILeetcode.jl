@@ -1,1 +1,6 @@
-{"c++": "class Solution {\npublic:\n    int divide(int dividend, int divisor) {\n        \n    }\n};", "python3": "class Solution:\n    def divide(self, dividend: int, divisor: int) -> int:", "typescript": "function divide(dividend: number, divisor: number): number {\n\n};", "rust": "impl Solution {\n    pub fn divide(dividend: i32, divisor: i32) -> i32 {\n        \n    }\n}"}
+{
+    "c++": "class Solution {\npublic:\n    int divide(int dividend, int divisor) {\n        \n    }\n};",
+    "python3": "class Solution:\n    def divide(self, dividend: int, divisor: int) -> int:",
+    "typescript": "function divide(dividend: number, divisor: number): number {\n\n};",
+    "rust": "impl Solution {\n    pub fn divide(dividend: i32, divisor: i32) -> i32 {\n        \n    }\n}"
+}

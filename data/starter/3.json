@@ -1,1 +1,6 @@
-{"c++": "class Solution {\npublic:\n    int lengthOfLongestSubstring(string s) {\n        \n    }\n};", "python3": "class Solution:\n    def lengthOfLongestSubstring(self, s: str) -> int:", "typescript": "function lengthOfLongestSubstring(s: string): number {\n\n};", "rust": "impl Solution {\n    pub fn length_of_longest_substring(s: String) -> i32 {\n        \n    }\n}"}
+{
+    "c++": "class Solution {\npublic:\n    int lengthOfLongestSubstring(string s) {\n        \n    }\n};",
+    "python3": "class Solution:\n    def lengthOfLongestSubstring(self, s: str) -> int:",
+    "typescript": "function lengthOfLongestSubstring(s: string): number {\n\n};",
+    "rust": "impl Solution {\n    pub fn length_of_longest_substring(s: String) -> i32 {\n        \n    }\n}"
+}

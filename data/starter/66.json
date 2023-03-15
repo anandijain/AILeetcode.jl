@@ -1,1 +1,6 @@
-{"rust": "impl Solution {\n    pub fn plus_one(digits: Vec<i32>) -> Vec<i32> {\n        \n    }\n}", "c++": "class Solution {\npublic:\n    vector<int> plusOne(vector<int>& digits) {\n        \n    }\n};", "python3": "class Solution:\n    def plusOne(self, digits: List[int]) -> List[int]:", "typescript": "function plusOne(digits: number[]): number[] {\n\n};"}
+{
+    "rust": "impl Solution {\n    pub fn plus_one(digits: Vec<i32>) -> Vec<i32> {\n        \n    }\n}",
+    "c++": "class Solution {\npublic:\n    vector<int> plusOne(vector<int>& digits) {\n        \n    }\n};",
+    "python3": "class Solution:\n    def plusOne(self, digits: List[int]) -> List[int]:",
+    "typescript": "function plusOne(digits: number[]): number[] {\n\n};"
+}

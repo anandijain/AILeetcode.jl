@@ -1,1 +1,6 @@
-{"python3": "class Solution:\n    def mySqrt(self, x: int) -> int:", "typescript": "function mySqrt(x: number): number {\n\n};", "rust": "impl Solution {\n    pub fn my_sqrt(x: i32) -> i32 {\n        \n    }\n}", "c++": "class Solution {\npublic:\n    int mySqrt(int x) {\n        \n    }\n};"}
+{
+    "python3": "class Solution:\n    def mySqrt(self, x: int) -> int:",
+    "typescript": "function mySqrt(x: number): number {\n\n};",
+    "rust": "impl Solution {\n    pub fn my_sqrt(x: i32) -> i32 {\n        \n    }\n}",
+    "c++": "class Solution {\npublic:\n    int mySqrt(int x) {\n        \n    }\n};"
+}

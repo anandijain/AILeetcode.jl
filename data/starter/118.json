@@ -1,1 +1,6 @@
-{"python3": "class Solution:\n    def generate(self, numRows: int) -> List[List[int]]:", "typescript": "function generate(numRows: number): number[][] {\n\n};", "rust": "impl Solution {\n    pub fn generate(num_rows: i32) -> Vec<Vec<i32>> {\n        \n    }\n}", "c++": "class Solution {\npublic:\n    vector<vector<int>> generate(int numRows) {\n        \n    }\n};"}
+{
+    "python3": "class Solution:\n    def generate(self, numRows: int) -> List[List[int]]:",
+    "typescript": "function generate(numRows: number): number[][] {\n\n};",
+    "rust": "impl Solution {\n    pub fn generate(num_rows: i32) -> Vec<Vec<i32>> {\n        \n    }\n}",
+    "c++": "class Solution {\npublic:\n    vector<vector<int>> generate(int numRows) {\n        \n    }\n};"
+}

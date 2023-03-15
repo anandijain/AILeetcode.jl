@@ -1,1 +1,6 @@
-{"python3": "class Solution:\n    def firstUniqChar(self, s: str) -> int:", "typescript": "function firstUniqChar(s: string): number {\n\n};", "rust": "impl Solution {\n    pub fn first_uniq_char(s: String) -> i32 {\n        \n    }\n}", "c++": "class Solution {\npublic:\n    int firstUniqChar(string s) {\n        \n    }\n};"}
+{
+    "python3": "class Solution:\n    def firstUniqChar(self, s: str) -> int:",
+    "typescript": "function firstUniqChar(s: string): number {\n\n};",
+    "rust": "impl Solution {\n    pub fn first_uniq_char(s: String) -> i32 {\n        \n    }\n}",
+    "c++": "class Solution {\npublic:\n    int firstUniqChar(string s) {\n        \n    }\n};"
+}

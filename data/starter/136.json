@@ -1,1 +1,6 @@
-{"c++": "class Solution {\npublic:\n    int singleNumber(vector<int>& nums) {\n        \n    }\n};", "python3": "class Solution:\n    def singleNumber(self, nums: List[int]) -> int:", "typescript": "function singleNumber(nums: number[]): number {\n\n};", "rust": "impl Solution {\n    pub fn single_number(nums: Vec<i32>) -> i32 {\n        \n    }\n}"}
+{
+    "c++": "class Solution {\npublic:\n    int singleNumber(vector<int>& nums) {\n        \n    }\n};",
+    "python3": "class Solution:\n    def singleNumber(self, nums: List[int]) -> int:",
+    "typescript": "function singleNumber(nums: number[]): number {\n\n};",
+    "rust": "impl Solution {\n    pub fn single_number(nums: Vec<i32>) -> i32 {\n        \n    }\n}"
+}

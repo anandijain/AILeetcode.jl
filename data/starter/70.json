@@ -1,1 +1,6 @@
-{"typescript": "function climbStairs(n: number): number {\n\n};", "rust": "impl Solution {\n    pub fn climb_stairs(n: i32) -> i32 {\n        \n    }\n}", "c++": "class Solution {\npublic:\n    int climbStairs(int n) {\n        \n    }\n};", "python3": "class Solution:\n    def climbStairs(self, n: int) -> int:"}
+{
+    "typescript": "function climbStairs(n: number): number {\n\n};",
+    "rust": "impl Solution {\n    pub fn climb_stairs(n: i32) -> i32 {\n        \n    }\n}",
+    "c++": "class Solution {\npublic:\n    int climbStairs(int n) {\n        \n    }\n};",
+    "python3": "class Solution:\n    def climbStairs(self, n: int) -> int:"
+}

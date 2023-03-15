@@ -1,1 +1,6 @@
-{"rust": "impl Solution {\n    pub fn is_power_of_three(n: i32) -> bool {\n        \n    }\n}", "c++": "class Solution {\npublic:\n    bool isPowerOfThree(int n) {\n        \n    }\n};", "python3": "class Solution:\n    def isPowerOfThree(self, n: int) -> bool:", "typescript": "function isPowerOfThree(n: number): boolean {\n\n};"}
+{
+    "rust": "impl Solution {\n    pub fn is_power_of_three(n: i32) -> bool {\n        \n    }\n}",
+    "c++": "class Solution {\npublic:\n    bool isPowerOfThree(int n) {\n        \n    }\n};",
+    "python3": "class Solution:\n    def isPowerOfThree(self, n: int) -> bool:",
+    "typescript": "function isPowerOfThree(n: number): boolean {\n\n};"
+}

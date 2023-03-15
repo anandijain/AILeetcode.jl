@@ -1,1 +1,6 @@
-{"c++": "class Solution {\npublic:\n    int strStr(string haystack, string needle) {\n        \n    }\n};", "python3": "class Solution:\n    def strStr(self, haystack: str, needle: str) -> int:", "typescript": "function strStr(haystack: string, needle: string): number {\n\n};", "rust": "impl Solution {\n    pub fn str_str(haystack: String, needle: String) -> i32 {\n        \n    }\n}"}
+{
+    "c++": "class Solution {\npublic:\n    int strStr(string haystack, string needle) {\n        \n    }\n};",
+    "python3": "class Solution:\n    def strStr(self, haystack: str, needle: str) -> int:",
+    "typescript": "function strStr(haystack: string, needle: string): number {\n\n};",
+    "rust": "impl Solution {\n    pub fn str_str(haystack: String, needle: String) -> i32 {\n        \n    }\n}"
+}
