@@ -11,13 +11,12 @@ import pandas as pd
 import numpy as np
 import openai
 from urllib.parse import urlsplit, urlunsplit
-
+openai.api_key = os.getenv("OPENAI_API_KEY")
+print(openai.Model.list())
 # initialize the driver
 langs = ["c++", "java", "python3", "c", "c#", "javascript", "ruby", "swift", "go", "scala", "kotlin", "rust", "php", "typescript", "racket", "erlang", "elixir", "dart"]
+decl_langs = langs + ["python"]
 
-# options = webdriver.FirefoxOptions()
-# options.add_argument("start-maximized")
-# driver = webdriver.Firefox(options=options)
 
 def login(driver):
     driver.get("https://leetcode.com/accounts/login/")
@@ -96,10 +95,6 @@ def get_code_w_lang(s, lang):
       code_re = re.compile(s, fr'```{re.escape(lang)}([\s\S]*?)```')
       return code_re.findall(s)
 
-# openai.api_key = os.getenv("OPENAI_API_KEY"); 
-# hist.append(msg(completion))
-# hist = []
-
 def solve_problem(p):
     completion = openai.ChatCompletion.create(
   model="gpt-3.5-turbo",
@@ -171,144 +166,6 @@ def remove_url_suffix(url):
     # Rebuild the URL and return it
     return urlunsplit((scheme, netloc, path, query, fragment))
 
-driver = startup()
-# Wait for the page to load and verify login success
-assert "LeetCode" in driver.title
-langs = ['c++', 'python3', 'typescript', 'rust']
-df = pd.read_csv('probs.csv')
-df.info()
-
-data_dir = "data"
-starter_dir = os.path.join(data_dir, "starter")
-
-# get a list of all the text files in data_dir
-text_files = [f for f in os.listdir(data_dir) if os.path.isfile(os.path.join(data_dir, f)) and f.endswith(".txt")]
-
-df = pd.read_csv("probs.csv") # replace with the actual file path of your dataframe CSV
-problem_data = []
-
-# iterate over the text files and find the matching json file in starter_dir
-for text_file in text_files:
-    problem_id = os.path.splitext(text_file)[0]
-    json_file = os.path.join(starter_dir, problem_id + ".json")
-    
-    if os.path.isfile(json_file):
-        with open(json_file, "r") as f:
-            data = json.load(f)
-        
-        # find the corresponding row in the dataframe
-        row = df.loc[df['prob_id'] == int(problem_id)]
-        if not row.empty:
-            problem_data.append((text_file, data, row))
-
-print(problem_data)
-
-prob_url = problem_data[0][2]['prob_url'].iloc[0]
-driver.get(prob_url)
-
-x = solve_problem(driver)
-print(x)
-
-switch_lang('typescript')
-switch_lang('python3')
-p = make_prompt(driver)
-sol = solve_problem(p)
-solb = remove_declaration(sol)
-submit_prob(driver, solb)
-click_button(driver, "Close")
-
-rows = list(df.iterrows())
-ts = two_sum_row = rows[0]
-
-for (i, row) in rows[4:]:
-    print(row)
-
-    try:
-        driver.get(row.prob_url)
-        sleep(3)
-        switch_lang('c')
-
-        p = make_prompt(driver)
-        completion = openai.ChatCompletion.create(
-        model="gpt-3.5-turbo",
-        messages=[
-        {"role": "user", "content": p},
-        ]
-        )
-        m = msg(completion)
-        c = content(m)
-        xs = get_code(c)
-        x = only(xs)
-        full_sol = remove_last_line(remove_declaration(x, decl_langs))
-
-        submit_prob(driver, full_sol)
-        sleep(3)
-    except Exception as e:
-        print(row)
-        print(e)
-
-driver = startup()
-i, row = rows[0]
-driver.get(row.prob_url)
-sleep(3)
-switch_lang('c')
-
-p = make_prompt(driver)
-completion = openai.ChatCompletion.create(
-model="gpt-3.5-turbo",
-messages=[
-{"role": "user", "content": p},
-]
-)
-m = msg(completion)
-c = content(m)
-xs = get_code(c)
-x = only(xs)
-full_sol = remove_last_line(remove_declaration(x, decl_langs))
-
-submit_prob(driver, full_sol)
-sleep(3)
-
-driver = startup()
-
-url = "https://leetcode.com/problemset/all/?sorting=W3sic29ydE9yZGVyIjoiQVNDRU5ESU5HIiwib3JkZXJCeSI6IkRJRkZJQ1VMVFkifV0%3D"
-driver.get(url)
-sleep(3)
-
-table = driver.find_element(By.CSS_SELECTOR, '[role="table"]')
-header = table.find_elements(By.CSS_SELECTOR, '[role="columnheader"]')
-header = list(map(lambda x: x.text, header))
-rows = table.find_elements(By.CSS_SELECTOR, '[role="row"]')
-row = rows[1]
-cols = row.find_elements(By.CSS_SELECTOR, '[role="cell"]')
-# Extract data from each row and store in list of dictionaries
-data = []
-
-for i in range(51):
-    print(i)
-    table = driver.find_element(By.CSS_SELECTOR, '[role="table"]')
-    # Find all rows within the table
-    rows = table.find_elements(By.CSS_SELECTOR, '[role="row"]')
-    print(f'nrows: {len(rows)}')
-    for row in rows[1:]:
-        cols = row.find_elements(By.CSS_SELECTOR, '[role="cell"]')
-        print(f'ncells: {len(cols)}')
-        prob_url = cols[2].find_elements("tag name", "a")
-        print(len(prob_url))
-        if len(prob_url) == 0:
-            continue
-        prob_url = prob_url[0].get_attribute("href")
-        cols = [col.text for col in cols] + [prob_url]
-        data.append(cols)
-    next_button = driver.find_element("css selector", 'button[aria-label="next"]')
-    next_button.click()
-    sleep(3)
-
-
-index = urls.index("https://leetcode.com/problems/linked-list-cycle/")
-index = urls.index("https://leetcode.com/problems/shortest-word-distance/")
-
-
 df = pd.read_csv("more_probs.csv")
 urls = list(map(remove_url_suffix, df.prob_url.tolist()))
 driver = startup()
@@ -343,22 +200,8 @@ for (i, url) in enumerate(urls[index:]):
         print(f"Exception caught: {e}")
         # raise e
 
-driver.get(url)
-sleep(3)
-switch_lang('rust')
-
-p = make_prompt(driver)
-completion = openai.ChatCompletion.create(
-model="gpt-3.5-turbo",
-messages=[
-{"role": "user", "content": p},
-]
-)
-m = msg(completion)
-c = content(completion)
-xs = get_code(c)
-x = only(xs)
-full_sol = remove_last_line(remove_declaration(x, decl_langs))
-
-submit_prob(driver, full_sol)
-sleep(10)
+# todo
+# implement logging to save the prompts, but better than i had previously. and get all of them 
+# we also want to either 1) sandbox and run locally to capture error, or use the error result from leetcode (which i think may be abbreviated)
+# the task is to be able to make a graph about how much feedback improves the ability for chatgpt to solve problems
+# we may want to experiment with giving it the ability to search for the docs, find the repo and copy the latest doc page or function signatures
