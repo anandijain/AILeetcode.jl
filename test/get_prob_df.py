@@ -38,25 +38,29 @@ driver.get(url)
 wait = WebDriverWait(driver, 10)
 sleep(5)
 
-table_div = driver.find_element('xpath', '//div[@role="table"]')
-probs = table_div.find_elements('css selector', 'a')
 ids = []
 names = []
 urls = []
 
 # Iterate over the WebElements and extract the required data
-for prob in probs:
-    text_parts = prob.text.split('. ')
-    if len(text_parts) != 2:
-        continue
-    print(text_parts)
-    prob_id = int(text_parts[0])
-    prob_name = text_parts[1]
-    prob_url = prob.get_attribute('href')
-    ids.append(prob_id)
-    names.append(prob_name)
-    urls.append(prob_url)
-
+for i in range(51):
+    print(i)
+    table_div = driver.find_element('xpath', '//div[@role="table"]')
+    probs = table_div.find_elements('css selector', 'a')
+    for prob in probs:
+        text_parts = prob.text.split('. ')
+        if len(text_parts) != 2:
+            continue
+        print(text_parts)
+        prob_id = int(text_parts[0])
+        prob_name = text_parts[1]
+        prob_url = prob.get_attribute('href')
+        ids.append(prob_id)
+        names.append(prob_name)
+        urls.append(prob_url)
+    next_button = driver.find_element("css selector", 'button[aria-label="next"]')
+    next_button.click()
+    sleep(3)
 # Create a DataFrame from the extracted data
 df = pd.DataFrame({'prob_id': ids, 'prob_name': names, 'prob_url': urls})
 df.to_csv('probs.csv', index=False)
