@@ -1,0 +1,16 @@
+var removeElement = function(nums, val) {
+    let i = 0;
+    
+    // Iterate through the nums array
+    for (let j = 0; j < nums.length; j++) {
+        // Check if nums[j] is not equal to val
+        if (nums[j] != val) {
+            // Swap nums[i] and nums[j]
+            [nums[i], nums[j]] = [nums[j], nums[i]];
+            // Increment i
+            i++;
+        }
+    }
+    
+    return i;
+};

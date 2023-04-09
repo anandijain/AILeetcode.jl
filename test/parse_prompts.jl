@@ -47,7 +47,7 @@ my_prompt = "Do not provide an explanation, just code in $lang. Be sure to annot
 # full_prompt = join([tp, rust_code], "\n\n")
 # foo = replchat(full_prompt)
 # codeblocks(foo)
-lang = "C"
+lang = "JavaScript"
 all_prompts = []
 
 most_likely_premium_probs = []
@@ -66,7 +66,7 @@ other_bad = []
     p = JSON3.read(read(fnp, String))
     
     qid = c.data.question.questionId
-    
+
     @info qid, slug
     if isfile(solnfn)
         continue

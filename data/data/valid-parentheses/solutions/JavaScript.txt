@@ -1,0 +1,21 @@
+var isValid = function(s) {
+    let stack = [];
+
+    let mapping = {
+        ')': '(',
+        '}': '{',
+        ']': '['
+    };
+
+    for (let ch of s) {
+        if (mapping.hasOwnProperty(ch)) {
+            let topElement = stack.length === 0 ? '#' : stack.pop();
+            if (topElement !== mapping[ch]) {
+                return false;
+            }
+        } else {
+            stack.push(ch);
+        }
+    }
+    return stack.length === 0;
+};

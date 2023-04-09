@@ -1,0 +1,29 @@
+var addBinary = function(a, b) {
+    let result = "";
+    let carry = 0;
+    let p1 = a.length - 1;
+    let p2 = b.length - 1;
+
+    while (p1 >= 0 || p2 >= 0) {
+        let x1 = p1 >= 0 ? parseInt(a[p1]) : 0;
+        let x2 = p2 >= 0 ? parseInt(b[p2]) : 0;
+        let tempSum = x1 + x2 + carry;
+        
+        // Calculate carry for next iteration
+        carry = tempSum >= 2 ? 1 : 0;
+        
+        // Add current digit to result (either 1 or 0)
+        result = (tempSum % 2) + result;
+
+        // Move pointers
+        p1--;
+        p2--;
+    }
+    
+    // If there is a carry left, add it to the result
+    if (carry > 0) {
+        result = carry + result;
+    }
+    
+    return result;
+};

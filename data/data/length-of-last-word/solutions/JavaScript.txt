@@ -1,0 +1,9 @@
+var lengthOfLastWord = function(s) {
+    s = s.trim(); // Remove any trailing spaces
+    let lastSpace = s.lastIndexOf(" "); // Find the last space in the string
+    if (lastSpace === -1) {
+        return s.length; // If there's no space, return the length of the whole string as the length of the last word
+    } else {
+        return s.length - lastSpace - 1; // Subtract the position of the last space and 1 to get the length of the last word
+    }
+};
