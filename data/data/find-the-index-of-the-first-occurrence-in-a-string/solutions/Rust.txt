@@ -1,0 +1,22 @@
+```rust
+pub fn str_str(haystack: String, needle: String) -> i32 {
+    if needle.is_empty() {
+        return 0;
+    }
+
+    let haystack_len = haystack.len();
+    let needle_len = needle.len();
+
+    if haystack_len < needle_len {
+        return -1;
+    }
+
+    for i in 0..=(haystack_len - needle_len) {
+        if &haystack[i..i + needle_len] == needle {
+            return i as i32;
+        }
+    }
+
+    -1
+}
+```

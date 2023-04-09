@@ -1,6 +1,12 @@
 # AILeetcode.jl
 
 
+for an estimate of how much one may expect to spend to boost the fuck out of their (python) leetcode ranking, see test/cost_estimate.py
+i think it should be around ~$20 (600_000 tokens)
+
+i am a booster!!!! big booster 
+a lot of credit to https://intuitiveexplanations.com/tech/messenger for helping me reverse engineer the leetcode api
+
 by running the script in `test/bin.jl` I was able to automatically solve 23/50 of the problems from [this Leetcode page](https://leetcode.com/problem-list/top-interview-questions/?sorting=W3sic29ydE9yZGVyIjoiQVNDRU5ESU5HIiwib3JkZXJCeSI6IkRJRkZJQ1VMVFkifV0%3D)
 
 note that ChatGPT often writes nonsensical tests, and I haven't personally verified the correctness of the solutions

@@ -1,0 +1,25 @@
+```rust
+use std::rc::Rc;
+use std::cell::RefCell;
+
+impl Solution {
+    pub fn inorder_traversal(root: Option<Rc<RefCell<TreeNode>>>) -> Vec<i32> {
+        let mut res = Vec::new();
+        let mut stack = Vec::new();
+        let mut curr = root;
+
+        while curr.is_some() || !stack.is_empty() {
+            while let Some(node) = curr {
+                curr = node.borrow_mut().left.take();
+                stack.push(node);
+            }
+
+            let node = stack.pop().unwrap();
+            res.push(node.borrow().val);
+            curr = node.borrow_mut().right.take();
+        }
+
+        res
+    }
+}
+```

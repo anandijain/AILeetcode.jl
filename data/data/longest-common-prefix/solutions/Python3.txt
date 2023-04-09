@@ -1,0 +1,19 @@
+if not strs:
+    return ""
+
+min_str = min(strs, key=len)
+longest_prefix = ""
+
+for i in range(len(min_str)):
+    curr_char = strs[0][i]
+    
+    for string in strs:
+        if string[i] != curr_char:
+            break
+    else:
+        longest_prefix += curr_char
+        continue
+    
+    break
+
+return longest_prefix

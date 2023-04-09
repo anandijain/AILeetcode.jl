@@ -1,0 +1,20 @@
+```rust
+pub fn longest_common_prefix(strs: Vec<String>) -> String {
+    if strs.is_empty() {
+        return String::new();
+    }
+
+    let shortest_string = strs.iter().min_by_key(|s| s.len()).unwrap();
+    let mut common_prefix = String::new();
+
+    for (i, c) in shortest_string.chars().enumerate() {
+        if strs.iter().all(|s| s.chars().nth(i) == Some(c)) {
+            common_prefix.push(c);
+        } else {
+            break;
+        }
+    }
+
+    common_prefix
+}
+```

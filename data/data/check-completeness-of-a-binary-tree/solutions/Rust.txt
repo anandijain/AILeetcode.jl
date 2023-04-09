@@ -1,0 +1,54 @@
+```rust
+use std::rc::Rc;
+use std::cell::RefCell;
+use std::collections::VecDeque;
+
+pub struct TreeNode {
+    pub val: i32,
+    pub left: Option<Rc<RefCell<TreeNode>>>,
+    pub right: Option<Rc<RefCell<TreeNode>>>,
+}
+
+impl TreeNode {
+    #[inline]
+    pub fn new(val: i32) -> Self {
+        TreeNode {
+            val,
+            left: None,
+            right: None,
+        }
+    }
+}
+
+pub fn is_complete_tree(root: Option<Rc<RefCell<TreeNode>>>) -> bool {
+    if let Some(root) = root {
+        let mut queue = VecDeque::new();
+        queue.push_back(root.clone());
+        let mut end = false;
+
+        while !queue.is_empty() {
+            let node = queue.pop_front().unwrap();
+            let left_child = node.borrow().left.clone();
+            let right_child = node.borrow().right.clone();
+
+            if end && (left_child.is_some() || right_child.is_some()) {
+                return false;
+            }
+
+            if let Some(left) = left_child {
+                queue.push_back(left);
+            } else {
+                end = true;
+            }
+
+            if let Some(right) = right_child {
+                queue.push_back(right);
+            } else {
+                end = true;
+            }
+        }
+        return true;
+    }
+    false
+}
+```

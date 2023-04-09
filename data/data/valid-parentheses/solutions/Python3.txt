@@ -1,0 +1,21 @@
+stack = []
+
+# Dictionary to store the mapping of open and close brackets
+bracket_map = {
+    ')': '(',
+    ']': '[',
+    '}': '{'
+}
+
+for char in s:
+    if char in bracket_map:  # Check if the character is a closing bracket
+        top_element = stack.pop() if stack else '#'  # Get the top element from stack, if it's empty use a dummy character
+        
+        # Check if the corresponding opening bracket is at the top of the stack
+        if bracket_map[char] != top_element:
+            return False
+    else:
+        stack.append(char)  # If it's an opening bracket, push it onto the stack
+
+# If the stack is empty, then the brackets are balanced
+return not stack

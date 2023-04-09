@@ -1,0 +1,21 @@
+```rust
+impl Solution {
+    pub fn delete_duplicates(head: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
+        let mut head = head;
+        let mut curr = head.as_mut();
+
+        while let Some(node) = curr {
+            while let Some(ref next) = node.next {
+                if node.val == next.val {
+                    node.next = next.next.clone();
+                } else {
+                    break;
+                }
+            }
+            curr = node.next.as_mut();
+        }
+
+        head
+    }
+}
+```

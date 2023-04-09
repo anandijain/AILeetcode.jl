@@ -1,0 +1,18 @@
+```rust
+pub fn climb_stairs(n: i32) -> i32 {
+    if n == 1 {
+        return 1;
+    }
+
+    let mut prev_prev = 1;
+    let mut prev = 2;
+
+    for _ in 3..=n {
+        let current = prev_prev + prev;
+        prev_prev = prev;
+        prev = current;
+    }
+
+    prev
+}
+```

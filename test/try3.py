@@ -16,6 +16,7 @@ print(openai.Model.list())
 # initialize the driver
 langs = ["c++", "java", "python3", "c", "c#", "javascript", "ruby", "swift", "go", "scala", "kotlin", "rust", "php", "typescript", "racket", "erlang", "elixir", "dart"]
 decl_langs = langs + ["python"]
+gpt_models = ["gpt-4", "gpt-3.5-turbo"]
 
 
 def login(driver):
@@ -46,7 +47,7 @@ def only(iterable):
     else:
         raise ValueError("Expected only one element in iterable, but found more.")
 
-def getc(driver):
+def get_prob_prompt(driver):
     return driver.find_element('xpath', "/html/head/meta[@name='description']").get_attribute("content")
 
 def get_btns(driver):
@@ -74,10 +75,10 @@ def switch_lang(lang):
     lb.click()
 
 def make_prompt(driver):
-    return getc(driver) + f'\n\nHere is the starter code in {get_lang(driver)}:\n\n```\n' + starter_code(driver) + '\n```\n\n' + f'Do not provide an explanation, just code in {get_lang(driver)}. Be sure to annotate all code blocks with triple backticks (```).'
+    return get_prob_prompt(driver) + f'\n\nHere is the starter code in {get_lang(driver)}:\n\n```\n' + starter_code(driver) + '\n```\n\n' + f'Do not provide an explanation, just code in {get_lang(driver)}. Be sure to annotate all code blocks with triple backticks (```).'
 
 # def make_prompt2(driver):
-#     return getc(driver) + f'\n\nHere is the starter code:\n\n```{get_lang(driver)}\n' + starter_code(driver) + '\n```\n\n' + f'Do not provide an explanation, just code in {get_lang(driver)}. Be sure to annotate all code blocks with triple backticks (```).'
+#     return get_prob_prompt(driver) + f'\n\nHere is the starter code:\n\n```{get_lang(driver)}\n' + starter_code(driver) + '\n```\n\n' + f'Do not provide an explanation, just code in {get_lang(driver)}. Be sure to annotate all code blocks with triple backticks (```).'
 
 def msg(x):
     return x.choices[0].message
@@ -97,7 +98,7 @@ def get_code_w_lang(s, lang):
 
 def solve_problem(p):
     completion = openai.ChatCompletion.create(
-  model="gpt-3.5-turbo",
+  model=gpt_models[0],
   messages=[
     {"role": "user", "content": p},
   ]
@@ -170,8 +171,10 @@ df = pd.read_csv("more_probs.csv")
 urls = list(map(remove_url_suffix, df.prob_url.tolist()))
 driver = startup()
 
-index = urls.index("https://leetcode.com/problems/trim-a-binary-search-tree/")
-for (i, url) in enumerate(urls[index:]):
+# index = urls.index("https://leetcode.com/problems/trim-a-binary-search-tree/")
+# index = urls.index("https://leetcode.com/problems/maximum-profit-in-job-scheduling/")
+# for (i, url) in enumerate(urls[index:]):
+for (i, url) in enumerate(urls):
     print(f'{i}: {url}')
 
     try:
@@ -205,3 +208,4 @@ for (i, url) in enumerate(urls[index:]):
 # we also want to either 1) sandbox and run locally to capture error, or use the error result from leetcode (which i think may be abbreviated)
 # the task is to be able to make a graph about how much feedback improves the ability for chatgpt to solve problems
 # we may want to experiment with giving it the ability to search for the docs, find the repo and copy the latest doc page or function signatures
+

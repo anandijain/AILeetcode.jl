@@ -1,0 +1,28 @@
+```rust
+use std::cmp::Ordering;
+use std::mem;
+
+pub fn merge_two_lists(mut list1: Option<Box<ListNode>>, mut list2: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
+    match (list1.as_ref(), list2.as_ref()) {
+        (Some(ref node1), Some(ref node2)) => match node1.val.cmp(&node2.val) {
+            Ordering::Less => {
+                let next = mem::replace(&mut list1.unwrap().next, None);
+                Some(Box::new(ListNode {
+                    val: node1.val,
+                    next: merge_two_lists(next, list2),
+                }))
+            },
+            _ => {
+                let next = mem::replace(&mut list2.unwrap().next, None);
+                Some(Box::new(ListNode {
+                    val: node2.val,
+                    next: merge_two_lists(list1, next),
+                }))
+            },
+        },
+        (Some(_), None) => list1,
+        (None, Some(_)) => list2,
+        (None, None) => None,
+    }
+}
+```

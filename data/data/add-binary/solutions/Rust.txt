@@ -1,0 +1,25 @@
+```rust
+pub fn add_binary(a: String, b: String) -> String {
+    let mut a = a.chars().rev().map(|c| c.to_digit(2).unwrap());
+    let mut b = b.chars().rev().map(|c| c.to_digit(2).unwrap());
+    let mut carry = 0;
+    let mut result = Vec::new();
+
+    loop {
+        let (a_digit, b_digit) = (a.next(), b.next());
+
+        if a_digit.is_none() && b_digit.is_none() && carry == 0 {
+            break;
+        }
+
+        let a_val = a_digit.unwrap_or(0);
+        let b_val = b_digit.unwrap_or(0);
+
+        let current_sum = a_val + b_val + carry;
+        carry = current_sum / 2;
+        result.push((current_sum % 2).to_string());
+    }
+
+    result.into_iter().rev().collect()
+}
+```

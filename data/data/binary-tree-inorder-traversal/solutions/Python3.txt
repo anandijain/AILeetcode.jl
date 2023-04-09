@@ -1,0 +1,13 @@
+if not root:
+            return []
+        
+        stack, output = [], []
+        while True:
+            while root:
+                stack.append(root)
+                root = root.left
+            if not stack:
+                return output
+            node = stack.pop()
+            output.append(node.val)
+            root = node.right
