@@ -1,0 +1,46 @@
+bool isCompleteTree(struct TreeNode* root){
+    if (root == NULL) return true;
+
+    // Initialize a queue for level order traversal
+    struct TreeNode* queue[100];
+    int front = 0, rear = 0;
+
+    // Enqueue the root node
+    queue[rear++] = root;
+    bool end = false;
+
+    // Perform level order traversal
+    while (front < rear) {
+        struct TreeNode* curr = queue[front++];
+        
+        // Check if the left child exists
+        if (curr->left) {
+            // If we've seen a missing node before,
+            // and the current node has a left child,
+            // it's not a complete binary tree
+            if (end) return false;
+
+            // Enqueue the left child
+            queue[rear++] = curr->left;
+        } else {
+            // Mark the end flag
+            end = true;
+        }
+
+        // Check if the right child exists
+        if (curr->right) {
+            // If we've seen a missing node before,
+            // and the current node has a right child,
+            // it's not a complete binary tree
+            if (end) return false;
+
+            // Enqueue the right child
+            queue[rear++] = curr->right;
+        } else {
+            // Mark the end flag
+            end = true;
+        }
+    }
+
+    return true;
+}

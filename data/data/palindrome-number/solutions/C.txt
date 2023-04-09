@@ -1,0 +1,20 @@
+bool isPalindrome(int x) {
+    if (x < 0) {
+        return false;
+    }
+    
+    int rev = 0;
+    int originalX = x;
+    
+    while (x != 0) {
+        int remainder = x % 10;
+        x /= 10;
+        
+        if (rev > INT_MAX / 10 || (rev == INT_MAX / 10 && remainder > 7)) return false;
+        if (rev < INT_MIN / 10 || (rev == INT_MIN / 10 && remainder < -8)) return false;
+        
+        rev = rev * 10 + remainder;
+    }
+    
+    return originalX == rev;
+}

@@ -1,0 +1,27 @@
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+int* twoSum(int* nums, int numsSize, int target, int* returnSize){
+    // Create a hashmap to store the compliment and index of the numbers
+    int* hashMap[20001] = {0};
+    *returnSize = 2;
+    int* result = (int*)malloc(*returnSize * sizeof(int));
+
+    // Iterate through the nums array
+    for(int i = 0; i < numsSize; i++) {
+        // Calculate the compliment of current number and target
+        int compliment = target - nums[i];
+
+        // Check if the compliment exists in the hashmap
+        if(hashMap[compliment + 10000] != 0) {
+            result[0] = hashMap[compliment + 10000] - 1; // Get index from hashMap as value - 1
+            result[1] = i;
+            break;
+        } else {
+            hashMap[nums[i] + 10000] = i + 1; // Store the value in hashMap
+        }
+    }
+    return result;
+}
+```

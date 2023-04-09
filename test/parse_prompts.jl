@@ -1,20 +1,21 @@
 using Cascadia, HTTP, JSON3, DataFrames, CSV, Gumbo, OpenAIReplMode
 
-slugs = readlines("slugs.txt")
-dir = _data("data")
-fns =readdir(dir;join=true)
-
-fn, fnp = fns[1:2]
-p = fnp
-c = JSON3.read(read(fn, String))
-p = JSON3.read(read(fnp, String))
-ps = filter(endswith("_prompt.json"), fns)
-cs = filter(endswith("_code.json"), fns)
-ts = collect(zip(ps, cs))
-
 p_content(p) = p.data.question.content
 text_prompt(p) = text(parsehtml(p_content(p)).root)
 code_snippets(c) = c.data.question.codeSnippets
+
+slugs = readlines("slugs.txt")
+dir = _data("data")
+# fns =readdir(dir;join=true)
+
+# fn, fnp = fns[1:2]
+# p = fnp
+# c = JSON3.read(read(fn, String))
+# p = JSON3.read(read(fnp, String))
+# ps = filter(endswith("_prompt.json"), fns)
+# cs = filter(endswith("_code.json"), fns)
+# ts = collect(zip(ps, cs))
+
 
 # text_prompt.()
 
@@ -46,7 +47,7 @@ my_prompt = "Do not provide an explanation, just code in $lang. Be sure to annot
 # full_prompt = join([tp, rust_code], "\n\n")
 # foo = replchat(full_prompt)
 # codeblocks(foo)
-lang = "Python3"
+lang = "C"
 all_prompts = []
 
 most_likely_premium_probs = []
@@ -58,12 +59,18 @@ other_bad = []
     solndir = joinpath(sdir, "solutions")
     fnp = joinpath(spdir, slug * "_prompt.json")
     fnc = joinpath(spdir, slug * "_code.json")
+    solnfn = joinpath(solndir, "$lang.txt")
+
     
     c = JSON3.read(read(fnc, String))
     p = JSON3.read(read(fnp, String))
     
     qid = c.data.question.questionId
+    
     @info qid, slug
+    if isfile(solnfn)
+        continue
+    end
     if isnothing(p_content(p))
         push!(most_likely_premium_probs, qid)
         continue
@@ -82,12 +89,11 @@ other_bad = []
     full_prompt = join([tp, lang_code], "\n\n")
     push!(all_prompts, (slug, full_prompt))
     # println(full_prompt)
-    # soln = replchat(full_prompt)
-    # chat_reset!()
-    # solnfn = joinpath(solndir, "$lang.txt")
-    # write(solnfn, getc(soln))
+    soln = replchat(full_prompt)
+    chat_reset!()
+    write(solnfn, getc(soln))
 end
 
-for (s,p) in all_prompts
-    write(joinpath("temp_python_prompts", "$s.txt"), p)
-end
+# for (s,p) in all_prompts
+#     write(joinpath("temp_python_prompts", "$s.txt"), p)
+# end

@@ -1,5 +1,6 @@
 # AILeetcode.jl
 
+I KNW i leaked my cookies dont get me banned
 
 for an estimate of how much one may expect to spend to boost the fuck out of their (python) leetcode ranking, see test/cost_estimate.py
 i think it should be around ~$20 (600_000 tokens)

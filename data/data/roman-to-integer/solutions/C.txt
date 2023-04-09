@@ -1,0 +1,51 @@
+Here's one possible implementation based on the given constraints:
+
+```c
+int romanToInt(char *s) {
+    int value = 0;
+    int prev_value = 0;
+
+    while (*s) {
+        int current_value;
+
+        switch (*s) {
+        case 'I':
+            current_value = 1;
+            break;
+        case 'V':
+            current_value = 5;
+            break;
+        case 'X':
+            current_value = 10;
+            break;
+        case 'L':
+            current_value = 50;
+            break;
+        case 'C':
+            current_value = 100;
+            break;
+        case 'D':
+            current_value = 500;
+            break;
+        case 'M':
+            current_value = 1000;
+            break;
+        default:
+            return 0;
+        }
+
+        if (current_value > prev_value) {
+            value += current_value - 2 * prev_value;
+        } else {
+            value += current_value;
+        }
+
+        prev_value = current_value;
+        s++;
+    }
+
+    return value;
+}
+```
+
+This code iterates through the input string, converting each character to its respective numerical value. It checks whether the current value is greater than the previous value to account for the special Roman numeral subtraction cases (e.g., IV, IX, XL, etc.). If a subtraction is needed, 2 times the previous value is subtracted from the current value (since the previous value was already added in the previous iteration). Finally, the function returns the total integer value.
