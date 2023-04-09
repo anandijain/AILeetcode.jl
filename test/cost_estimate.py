@@ -18,6 +18,10 @@ For our models with 32k context lengths (e.g. gpt-4-32k and gpt-4-32k-0314), the
 $0.06/1k prompt tokens
 
 $0.12/1k sampled tokens
+
+
+Model	Usage
+gpt-3.5-turbo	$0.002 / 1K tokens
 """
 
 enc = tiktoken.encoding_for_model("gpt-4")
@@ -34,8 +38,11 @@ for filename in os.listdir(dir):
 print(result)
 l = list(map(len, result)) # 294546
 prompt_cost = (sum(l) / 1000) * 0.03
+prompt_cost_35 = (sum(l) / 1000) * 0.002
 
 # lets assume that the result is half the length of prompt
 sampled_cost = (sum(l) / 2000) * 0.06
+sampled_cost_35 = (sum(l) / 2000) * 0.002
 
 print(sum([prompt_cost, sampled_cost]))
+print(sum([prompt_cost_35, sampled_cost_35]))
